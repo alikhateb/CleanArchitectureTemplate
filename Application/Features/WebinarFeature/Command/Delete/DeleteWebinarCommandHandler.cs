@@ -1,0 +1,33 @@
+﻿using Application.Common.Repositories;
+using Domain.Abstractions;
+using MediatR;
+
+namespace Application.Features.WebinarFeature.Command.Delete
+{
+    public class DeleteWebinarCommandHandler : IRequestHandler<DeleteWebinarCommand, Guid>
+    {
+        private readonly IWebinarRepository _webinarRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public DeleteWebinarCommandHandler(IWebinarRepository webinarRepository,
+            IUnitOfWork unitOfWork)
+        {
+            _webinarRepository = webinarRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<Guid> Handle(DeleteWebinarCommand command,
+            CancellationToken cancellationToken)
+        {
+            var entity = await _webinarRepository.GetByIdAsync(e => e.Id == command.Id);
+
+            if (entity is null) return Guid.Empty;
+
+            await _webinarRepository.DeleteAsync(entity);
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return entity.Id;
+        }
+    }
+}
