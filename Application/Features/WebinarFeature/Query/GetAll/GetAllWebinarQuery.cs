@@ -1,9 +1,8 @@
 ﻿using Application.Features.WebinarFeature.Query.Result;
 using MediatR;
 
-namespace Application.Features.WebinarFeature.Query.GetAll
+namespace Application.Features.WebinarFeature.Query.GetAll;
+
+public class GetAllWebinarQuery : IRequest<List<WebinarResult>>
 {
-    public class GetAllWebinarQuery : IRequest<List<WebinarResult>>
-    {
-    }
 }

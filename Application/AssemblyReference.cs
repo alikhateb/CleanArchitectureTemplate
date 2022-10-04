@@ -1,6 +1,5 @@
-﻿namespace Application
+﻿namespace Application;
+
+public class AssemblyReference
 {
-    public class AssemblyReference
-    {
-    }
 }

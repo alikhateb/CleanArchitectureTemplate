@@ -3,13 +3,12 @@ using Domain.Entity;
 using Infrastructure.Abstractions;
 using Infrastructure.Context;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories;
+
+public class WebinarRepository : Repository<Webinar>, IWebinarRepository
 {
-    public class WebinarRepository : Repository<Webinar>, IWebinarRepository
+    public WebinarRepository(ApplicationDbContext context)
+        : base(context)
     {
-        public WebinarRepository(ApplicationDbContext context)
-            : base(context)
-        {
-        }
     }
 }

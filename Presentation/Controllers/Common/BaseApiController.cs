@@ -1,15 +1,15 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.Controllers.Common
+namespace Presentation.Controllers.Common;
+
+[ApiController]
+public class BaseApiController : ControllerBase
 {
-    [ApiController]
-    public class BaseApiController : ControllerBase
+    protected readonly IMediator Mediator;
+
+    public BaseApiController(IMediator mediator)
     {
-        protected readonly IMediator Mediator;
-        public BaseApiController(IMediator mediator)
-        {
-            Mediator = mediator;
-        }
+        Mediator = mediator;
     }
 }

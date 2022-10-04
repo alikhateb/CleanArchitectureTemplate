@@ -1,21 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System.Reflection;
 
-namespace Infrastructure.Context
+namespace Infrastructure.Context;
+
+public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
-    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+    public ApplicationDbContext CreateDbContext(string[] args)
     {
-        public ApplicationDbContext CreateDbContext(string[] args)
-        {
-            var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            builder.UseSqlServer(
-                "Server=.;Database=clean_architecture_test;Trusted_Connection=True;",
-                builder => builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)
-                );
+        builder.UseSqlServer(
+            "Server=.;Database=clean_architecture_test;Trusted_Connection=True;",
+            builder => builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)
+        );
 
-            return new ApplicationDbContext(builder.Options);
-        }
+        return new ApplicationDbContext(builder.Options);
     }
 }

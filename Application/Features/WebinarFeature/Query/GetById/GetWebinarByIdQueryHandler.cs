@@ -4,32 +4,29 @@ using AutoMapper;
 using Domain.Exceptions;
 using MediatR;
 
-namespace Application.Features.WebinarFeature.Query.GetById
+namespace Application.Features.WebinarFeature.Query.GetById;
+
+public class GetWebinarByIdQueryHandler : IRequestHandler<GetWebinarByIdQuery, WebinarResult>
 {
-    public class GetWebinarByIdQueryHandler : IRequestHandler<GetWebinarByIdQuery, WebinarResult>
+    private readonly IMapper _mapper;
+    private readonly IWebinarRepository _webinarRepository;
+
+    public GetWebinarByIdQueryHandler(IWebinarRepository webinarRepository,
+        IMapper mapper)
     {
-        private readonly IWebinarRepository _webinarRepository;
-        private readonly IMapper _mapper;
-        public GetWebinarByIdQueryHandler(IWebinarRepository webinarRepository,
-            IMapper mapper)
-        {
-            _webinarRepository = webinarRepository;
-            _mapper = mapper;
-        }
+        _webinarRepository = webinarRepository;
+        _mapper = mapper;
+    }
 
-        public async Task<WebinarResult> Handle(GetWebinarByIdQuery query,
-            CancellationToken cancellationToken)
-        {
-            var entity = await _webinarRepository.GetByIdAsync(e => e.Id == query.Id);
+    public async Task<WebinarResult> Handle(GetWebinarByIdQuery query,
+        CancellationToken cancellationToken)
+    {
+        var entity = await _webinarRepository.GetByIdAsync(e => e.Id == query.Id);
 
-            if (entity is null)
-            {
-                throw new WebinarNotFoundException(query.Id);
-            }
+        if (entity is null) throw new WebinarNotFoundException(query.Id);
 
-            var result = _mapper.Map<WebinarResult>(entity);
+        var result = _mapper.Map<WebinarResult>(entity);
 
-            return result;
-        }
+        return result;
     }
 }
