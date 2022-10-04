@@ -1,7 +1,7 @@
-﻿using System.Linq.Expressions;
-using Domain.Abstractions;
+﻿using Domain.Abstractions;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Abstractions;
 

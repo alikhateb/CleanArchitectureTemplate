@@ -1,8 +1,8 @@
-﻿using Domain.Entity.Common;
+﻿using Domain.Primitives;
 
-namespace Domain.Entity;
+namespace Domain.Entities;
 
-public class Webinar : BaseEntity
+public class Webinar : Entity
 {
     public Webinar(
         Guid id,
@@ -12,10 +12,6 @@ public class Webinar : BaseEntity
     {
         Name = name;
         ScheduledOn = scheduledOn;
-    }
-
-    private Webinar()
-    {
     }
 
     public string Name { get; }

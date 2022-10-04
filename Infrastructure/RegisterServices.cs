@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Application.Common.Repositories;
+﻿using Application.Common.Repositories;
 using Domain.Abstractions;
 using Infrastructure.Abstractions;
 using Infrastructure.Context;
@@ -7,6 +6,7 @@ using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Infrastructure;
 

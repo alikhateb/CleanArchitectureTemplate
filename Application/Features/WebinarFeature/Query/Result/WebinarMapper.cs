@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Entity;
+using Domain.Entities;
 
 namespace Application.Features.WebinarFeature.Query.Result;
 

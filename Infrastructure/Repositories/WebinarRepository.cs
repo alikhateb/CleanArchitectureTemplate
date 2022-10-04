@@ -1,5 +1,5 @@
 ﻿using Application.Common.Repositories;
-using Domain.Entity;
+using Domain.Entities;
 using Infrastructure.Abstractions;
 using Infrastructure.Context;
 

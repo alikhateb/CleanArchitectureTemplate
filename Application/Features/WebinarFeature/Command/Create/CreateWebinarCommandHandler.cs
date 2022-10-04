@@ -1,6 +1,6 @@
 ﻿using Application.Common.Repositories;
 using Domain.Abstractions;
-using Domain.Entity;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.WebinarFeature.Command.Create;

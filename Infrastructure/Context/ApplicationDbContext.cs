@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Domain.Entity;
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Infrastructure.Context;
 

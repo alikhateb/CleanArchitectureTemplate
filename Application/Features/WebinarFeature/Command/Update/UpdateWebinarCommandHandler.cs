@@ -1,6 +1,6 @@
 ﻿using Application.Common.Repositories;
 using Domain.Abstractions;
-using Domain.Entity;
+using Domain.Entities;
 using Domain.Exceptions;
 using MediatR;
 
