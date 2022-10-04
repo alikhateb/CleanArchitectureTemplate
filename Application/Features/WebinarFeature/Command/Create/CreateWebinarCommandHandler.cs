@@ -1,6 +1,5 @@
-﻿using Application.Common.Repositories;
-using Domain.Abstractions;
-using Domain.Entity;
+﻿using Domain.Abstractions;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.WebinarFeature.Command.Create;
@@ -8,16 +7,18 @@ namespace Application.Features.WebinarFeature.Command.Create;
 public class CreateWebinarCommandHandler : IRequestHandler<CreateWebinarCommand, Guid>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IWebinarRepository _webinarRepository;
+    private readonly IRepository<Webinar> _webinarRepository;
 
-    public CreateWebinarCommandHandler(IWebinarRepository webinarRepository,
+    public CreateWebinarCommandHandler(
+        IRepository<Webinar> webinarRepository,
         IUnitOfWork unitOfWork)
     {
         _webinarRepository = webinarRepository;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Guid> Handle(CreateWebinarCommand command,
+    public async Task<Guid> Handle(
+        CreateWebinarCommand command,
         CancellationToken cancellationToken)
     {
         var entity = new Webinar(Guid.NewGuid(), command.Name, command.ScheduledOn);

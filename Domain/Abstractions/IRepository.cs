@@ -1,22 +1,25 @@
-﻿using System.Linq.Expressions;
-
-namespace Domain.Abstractions;
+﻿namespace Domain.Abstractions;
 
 public interface IRepository<T> where T : class
 {
-    Task<List<T>> GetAllAsync();
+    Task<IEnumerable<T>> GetAllWithSpecificationPattern(ISpecification<T> specification = default);
+    Task<T> FindWithSpecificationPattern(ISpecification<T> specification = default);
 
-    Task<List<T>> GetAllAsync(Expression<Func<T, bool>> conditionExpression);
+    //Task<IEnumerable<T>> GetListAsync();
 
-    Task<List<T>> GetAllAsync(params Expression<Func<T, object>>[] navigationProperties);
+    //Task<IEnumerable<T>> GetListAsync(Expression<Func<T, bool>> criteria);
 
-    Task<List<T>> GetAllAsync(Expression<Func<T, bool>> conditionExpression,
-        params Expression<Func<T, object>>[] navigationProperties);
+    //Task<IEnumerable<T>> GetListAsync(List<Expression<Func<T, object>>> includes);
 
-    Task<T> GetByIdAsync(Expression<Func<T, bool>> conditionExpression);
+    //Task<IEnumerable<T>> GetListAsync(
+    //    Expression<Func<T, bool>> criteria,
+    //    List<Expression<Func<T, object>>> includes);
 
-    Task<T> GetByIdAsync(Expression<Func<T, bool>> conditionExpression,
-        params Expression<Func<T, object>>[] navigationProperties);
+    //Task<T> FindAsync(Expression<Func<T, bool>> criteria);
+
+    //Task<T> FindAsync(
+    //    Expression<Func<T, bool>> criteria,
+    //    List<Expression<Func<T, object>>> includes);
 
     Task AddAsync(T entity);
 
