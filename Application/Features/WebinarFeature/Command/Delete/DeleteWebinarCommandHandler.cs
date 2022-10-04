@@ -3,31 +3,32 @@ using Domain.Abstractions;
 using Domain.Exceptions;
 using MediatR;
 
-namespace Application.Features.WebinarFeature.Command.Delete;
-
-public class DeleteWebinarCommandHandler : IRequestHandler<DeleteWebinarCommand, Guid>
+namespace Application.Features.WebinarFeature.Command.Delete
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IWebinarRepository _webinarRepository;
-
-    public DeleteWebinarCommandHandler(IWebinarRepository webinarRepository,
-        IUnitOfWork unitOfWork)
+    public class DeleteWebinarCommandHandler : IRequestHandler<DeleteWebinarCommand, Guid>
     {
-        _webinarRepository = webinarRepository;
-        _unitOfWork = unitOfWork;
-    }
+        private readonly IWebinarRepository _webinarRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-    public async Task<Guid> Handle(DeleteWebinarCommand command,
-        CancellationToken cancellationToken)
-    {
-        var entity = await _webinarRepository.GetByIdAsync(e => e.Id == command.Id);
+        public DeleteWebinarCommandHandler(IWebinarRepository webinarRepository,
+            IUnitOfWork unitOfWork)
+        {
+            _webinarRepository = webinarRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<Guid> Handle(DeleteWebinarCommand command,
+            CancellationToken cancellationToken)
+        {
+            var entity = await _webinarRepository.GetByIdAsync(e => e.Id == command.Id);
 
         if (entity is null) throw new WebinarNotFoundException(command.Id);
 
-        await _webinarRepository.DeleteAsync(entity);
+            await _webinarRepository.DeleteAsync(entity);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return entity.Id;
+            return entity.Id;
+        }
     }
 }
