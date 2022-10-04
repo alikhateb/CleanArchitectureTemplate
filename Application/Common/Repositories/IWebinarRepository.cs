@@ -1,9 +1,8 @@
 ﻿using Domain.Abstractions;
 using Domain.Entity;
 
-namespace Application.Common.Repositories
+namespace Application.Common.Repositories;
+
+public interface IWebinarRepository : IRepository<Webinar>
 {
-    public interface IWebinarRepository : IRepository<Webinar>
-    {
-    }
 }

@@ -1,14 +1,13 @@
 ﻿using FluentValidation;
 
-namespace Application.Features.WebinarFeature.Command.Update
+namespace Application.Features.WebinarFeature.Command.Update;
+
+public class UpdateWebinarCommandValidator : AbstractValidator<UpdateWebinarCommand>
 {
-    public class UpdateWebinarCommandValidator : AbstractValidator<UpdateWebinarCommand>
+    public UpdateWebinarCommandValidator()
     {
-        public UpdateWebinarCommandValidator()
-        {
-            RuleFor(e => e.Name)
-                .MaximumLength(200)
-                .NotEmpty();
-        }
+        RuleFor(e => e.Name)
+            .MaximumLength(200)
+            .NotEmpty();
     }
 }

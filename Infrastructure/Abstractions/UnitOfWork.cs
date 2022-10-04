@@ -1,25 +1,24 @@
 ﻿using Domain.Abstractions;
 using Infrastructure.Context;
 
-namespace Infrastructure.Abstractions
+namespace Infrastructure.Abstractions;
+
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    private readonly ApplicationDbContext _context;
+
+    public UnitOfWork(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        public UnitOfWork(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+    public void Dispose()
+    {
+        _context.Dispose();
+    }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
-
-        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            return await _context.SaveChangesAsync(cancellationToken);
-        }
+    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.SaveChangesAsync(cancellationToken);
     }
 }
