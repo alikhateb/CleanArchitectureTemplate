@@ -1,5 +1,5 @@
 ﻿using Domain.Abstractions;
-using Infrastructure.Abstractions;
+using Infrastructure.Common;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

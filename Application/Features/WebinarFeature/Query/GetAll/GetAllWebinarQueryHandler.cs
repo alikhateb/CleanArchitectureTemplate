@@ -1,4 +1,4 @@
-﻿using Application.Common.Specifications;
+﻿using Application.Common.Specifications.WebinarSpecifications;
 using Application.Features.WebinarFeature.Query.Result;
 using AutoMapper;
 using Domain.Abstractions;
@@ -25,7 +25,7 @@ internal class GetAllWebinarQueryHandler : IRequestHandler<GetAllWebinarQuery, L
         CancellationToken cancellationToken)
     {
         var entities = await _webinarRepository
-            .GetAllWithSpecificationPattern(new SortWebinarSpecification(w => w.Name));
+            .GetList(new SortWebinarSpecification(w => w.Name));
 
         if (entities is null)
         {

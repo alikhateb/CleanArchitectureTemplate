@@ -1,4 +1,4 @@
-﻿using Application.Common.Specifications;
+﻿using Application.Common.Specifications.WebinarSpecifications;
 using Domain.Abstractions;
 using Domain.Entities;
 using Domain.Exceptions;
@@ -24,7 +24,7 @@ public class DeleteWebinarCommandHandler : IRequestHandler<DeleteWebinarCommand,
         CancellationToken cancellationToken)
     {
         var entity = await _webinarRepository
-            .FindWithSpecificationPattern(new FindWebinarByIdSpecification(command.Id));
+            .Find(new FindWebinarByIdSpecification(command.Id));
 
         if (entity is null)
         {

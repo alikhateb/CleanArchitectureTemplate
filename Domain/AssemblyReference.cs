@@ -1,5 +1,5 @@
 ﻿namespace Domain;
 
-public class AssemblyReference
+public sealed class AssemblyReference
 {
 }

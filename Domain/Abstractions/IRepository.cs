@@ -2,8 +2,8 @@
 
 public interface IRepository<T> where T : class
 {
-    Task<IEnumerable<T>> GetAllWithSpecificationPattern(ISpecification<T> specification = default);
-    Task<T> FindWithSpecificationPattern(ISpecification<T> specification = default);
+    Task<IEnumerable<T>> GetList(ISpecification<T> specification = default);
+    Task<T> Find(ISpecification<T> specification = default);
 
     //Task<IEnumerable<T>> GetListAsync();
 

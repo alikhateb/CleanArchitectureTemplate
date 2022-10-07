@@ -2,7 +2,7 @@
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Abstractions;
+namespace Infrastructure.Common;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -13,7 +13,7 @@ public class Repository<T> : IRepository<T> where T : class
         _context = context;
     }
 
-    public async Task<IEnumerable<T>> GetAllWithSpecificationPattern(ISpecification<T> specification = default)
+    public async Task<IEnumerable<T>> GetList(ISpecification<T> specification = default)
     {
         var query = _context.Set<T>().AsNoTracking();
 
@@ -41,7 +41,7 @@ public class Repository<T> : IRepository<T> where T : class
         return query;
     }
 
-    public async Task<T> FindWithSpecificationPattern(ISpecification<T> specification = default)
+    public async Task<T> Find(ISpecification<T> specification = default)
     {
         var query = _context.Set<T>().AsNoTracking();
 

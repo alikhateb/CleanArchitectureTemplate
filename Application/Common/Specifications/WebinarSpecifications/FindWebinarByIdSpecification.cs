@@ -1,7 +1,6 @@
-﻿using Application.Abstractions;
-using Domain.Entities;
+﻿using Domain.Entities;
 
-namespace Application.Common.Specifications;
+namespace Application.Common.Specifications.WebinarSpecifications;
 
 public sealed class FindWebinarByIdSpecification : Specification<Webinar>
 {

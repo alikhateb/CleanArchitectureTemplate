@@ -1,5 +1,5 @@
 ﻿namespace Presentation;
 
-public class AssemblyReference
+public sealed class AssemblyReference
 {
 }

@@ -1,8 +1,7 @@
-﻿using Application.Abstractions;
-using Domain.Entities;
+﻿using Domain.Entities;
 using System.Linq.Expressions;
 
-namespace Application.Common.Specifications;
+namespace Application.Common.Specifications.WebinarSpecifications;
 
 public sealed class SortWebinarSpecification : Specification<Webinar>
 {
