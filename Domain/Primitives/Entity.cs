@@ -19,6 +19,16 @@ public abstract class Entity : IEquatable<Entity>
         return other.Id == Id;
     }
 
+    public static bool operator ==(Entity? first, Entity? second)
+    {
+        return first is not null && second is not null && first.Equals(second);
+    }
+
+    public static bool operator !=(Entity? first, Entity? second)
+    {
+        return !(first == second);
+    }
+
     public override bool Equals(object? obj)
     {
         if (obj is null || obj.GetType() != GetType() || obj is not Entity entity)
@@ -32,15 +42,5 @@ public abstract class Entity : IEquatable<Entity>
     public override int GetHashCode()
     {
         return Id.GetHashCode() * 41;
-    }
-
-    public static bool operator ==(Entity? first, Entity? second)
-    {
-        return first is not null && second is not null && first.Equals(second);
-    }
-
-    public static bool operator !=(Entity? first, Entity? second)
-    {
-        return !(first == second);
     }
 }
